@@ -46,12 +46,25 @@ if __name__ == '__main__':
         json_data = json.load(json_file)
     while True:
         print('\n')
-        print("1. Сгенерировать ключи")
-        print("2. Зашифровать текст")
-        print("3. Дешифровать текст")
+        print("1. Зашифровать текст")
+        print("2. Дешифровать текст")
+        print("3. Сгенерировать ключи")
         print("0. Выйти из программы")
         cmd = input("Выберите действие: ")
+
         if cmd == "1":
+            iv = get_iv_value(settings)
+            print("Шифруем...")
+            encryption(settings, iv)
+            print("Готово!")
+
+        elif cmd == "2":
+            iv = get_iv_value(settings)
+            print("Дешифруем...")
+            decryption(settings, iv)
+            print("Готово!")
+
+        elif cmd == "3":
             while True:
                 print("1. 64 бит")
                 print("2. 128 бит")
@@ -80,17 +93,6 @@ if __name__ == '__main__':
                 elif cmd_2 == "0":
                     break
 
-        elif cmd == "2":
-            iv = get_iv_value(settings)
-            print("Шифруем...")
-            encryption(settings, iv)
-            print("Готово!")
-
-        elif cmd == "3":
-            iv = get_iv_value(settings)
-            print("Дешифруем...")
-            decryption(settings, iv)
-            print("Готово!")
         elif cmd == "0":
             break
         else:
